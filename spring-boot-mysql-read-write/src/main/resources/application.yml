@@ -1,0 +1,24 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+app:
+  datasource:
+    leader:
+      url: jdbc:mysql://${MYSQL_LEADER_HOST:localhost}:${MYSQL_LEADER_PORT:4406}/mydb
+      username: mydb_user
+      password: mydb_pwd
+    follower:
+      url: jdbc:mysql://${MYSQL_FOLLOWER_HOST:localhost}:${MYSQL_FOLLOWER_PORT:5506}/mydb
+      username: mydb_slave_user
+      password: mydb_slave_pwd
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
